@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { StyledForm } from "./Form.Styled";
+import DropDown from "./dropDown/DropDown";
 
 const Form = () => {
   let inputRef = useRef();
@@ -28,6 +29,8 @@ const Form = () => {
             ref={inputRef}
           />
         </div>
+
+        <DropDown />
       </form>
     </StyledForm>
   );
