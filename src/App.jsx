@@ -7,7 +7,9 @@ import { theme } from "./theme/theme";
 import Header from "./components/header/Header";
 import Form from "./components/form/Form";
 import Card from "./components/card/Card";
+import ContainerCards from "./components/card/container-cards/ContainerCards";
 
+import { AnimatePresence } from "framer-motion";
 function App() {
   const [countriesData, setCountriesData] = useState(null);
   const [isDark, setIsDark] = useState(false);
@@ -17,12 +19,13 @@ function App() {
   const toggleTheme = () => setIsDark((oldState) => !oldState);
 
   useEffect(() => {
-    fetchAPI("region/ame")
+    fetchAPI("region/americas")
       .then((res) => res.json())
       .then((data) => {
         setCountriesData(data);
       });
   }, []);
+  console.log(countriesData);
 
   const cardElements = countriesData
     ? countriesData.map((country) => (
@@ -44,8 +47,13 @@ function App() {
 
         <Header onClick={toggleTheme} />
         <Form setData={setCountriesData} />
-
-        <div className="side-padding">{cardElements}</div>
+        <AnimatePresence mode="wait">
+          {countriesData ? (
+            <ContainerCards className="side-padding" key={countriesData.length}>
+              {cardElements}
+            </ContainerCards>
+          ) : null}
+        </AnimatePresence>
       </ThemeProvider>
     </>
   );

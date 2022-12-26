@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
 export const StyledCard = styled.div`
-  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
   border-radius: 10px;
   margin-top: 5rem;
   background-color: ${({ theme }) => theme.elements};
+  box-shadow: ${({ theme }) => {
+    return theme.boxShadow ? theme.boxShadow : null;
+  }};
 
   h2 {
     font-size: 1.25rem;
@@ -23,6 +27,7 @@ export const StyledCard = styled.div`
 
   .flag-img {
     width: 100%;
+    height: 250px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     object-fit: cover;
@@ -30,6 +35,16 @@ export const StyledCard = styled.div`
 
   .container-stats {
     padding: 1.5rem;
-    padding-bottom: 3rem;
+    padding-bottom: 2.5rem;
+  }
+
+  @media screen and (min-width: 900px) {
+    width: 400px;
+
+    .flag-img {
+      width: 100%;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
   }
 `;

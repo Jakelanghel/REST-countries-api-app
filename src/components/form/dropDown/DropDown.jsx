@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyledDropDown } from "./DropDown.Styled";
 import { motion, AnimatePresence } from "framer-motion";
-import { fetchAPI } from "../../../services/fetchAPI";
+import { dropDownVariants } from "../../../variants/dropDownVariants";
 
 const DropDown = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,19 +15,6 @@ const DropDown = (props) => {
     props.filterByRegion(e);
   };
 
-  const dropDownVariants = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
-      transition: { delay: 0.1, ease: "easeInOut" },
-    },
-    exit: {
-      opacity: 0,
-      transition: { delay: 0.1 },
-    },
-  };
   return (
     <StyledDropDown>
       <div className="container-dropdown">

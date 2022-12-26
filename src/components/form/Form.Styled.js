@@ -58,4 +58,15 @@ export const StyledForm = styled.main`
     position: relative;
     z-index: 0;
   }
+
+  @media screen and (min-width: 900px) {
+    form {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .container-search {
+      width: 50%;
+    }
+  }
 `;

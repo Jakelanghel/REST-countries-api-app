@@ -1,14 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-    :root {
-        --dark-blue: hsl(209, 23%, 22%);      // Dark Mode Elements
-        --very-dark-blue-bg: hsl(207, 26%, 17%); // Dark Mode Background
-        --very-dark-blue-txt: hsl(200, 15%, 8%);  // Light Mode Text
-        --dark-gray: hsl(0, 0%, 52%);         // Light Mode Input
-        --very-light-gray: hsl(0, 0%, 98%);   // Light Mode Background
-        --white: hsl(0, 0%, 100%);            // Dark Mode Text & Light Mode Elements
-    }
 
     * {
         margin: 0; 
@@ -34,11 +26,21 @@ export const GlobalStyles = createGlobalStyle`
         padding-right: 1.5rem;
     }
 
-    /* .bs-1 {
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    
 
-    } */
+    @media screen and (min-width: 900px) {
+        .side-padding {
+            padding-left: 5rem;
+            padding-right: 5rem;
+        }
 
-    /* ${({ theme }) => theme.background} */
+        .container-cards {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+    }
+    }
 
+    
 `;

@@ -30,4 +30,18 @@ export const StyledHeader = styled.header`
     font-weight: 600;
     margin-top: 5px;
   }
+
+  @media screen and (min-width: 900px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .theme-icon {
+      width: 25px;
+    }
+
+    p {
+      font-size: 1.25rem;
+    }
+  }
 `;
