@@ -10,12 +10,9 @@ const DropDown = (props) => {
     setIsOpen((oldState) => !oldState);
   };
 
-  const filterByRegion = (e) => {
-    const region = `region/${e.target.textContent}`;
+  const onClick = (e) => {
     toggleDropDown();
-    fetchAPI(region)
-      .then((res) => res.json())
-      .then((data) => props.setCountriesData(data));
+    props.filterByRegion(e);
   };
 
   const dropDownVariants = {
@@ -55,19 +52,19 @@ const DropDown = (props) => {
               exit="exit"
             >
               <div className="dropdown-options bs-1 dropdown-box">
-                <p className="option" onClick={filterByRegion}>
+                <p className="option" onClick={onClick}>
                   Africa
                 </p>
-                <p className="option" onClick={filterByRegion}>
+                <p className="option" onClick={onClick}>
                   America
                 </p>
-                <p className="option" onClick={filterByRegion}>
+                <p className="option" onClick={onClick}>
                   Asia
                 </p>
-                <p className="option" onClick={filterByRegion}>
+                <p className="option" onClick={onClick}>
                   Europe
                 </p>
-                <p className="option" onClick={filterByRegion}>
+                <p className="option" onClick={onClick}>
                   Oceania
                 </p>
               </div>

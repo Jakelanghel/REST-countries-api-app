@@ -1,11 +1,32 @@
 import React, { useState, useEffect, useRef } from "react";
 import { StyledForm } from "./Form.Styled";
+import { fetchAPI } from "../../services/fetchAPI";
+
 import DropDown from "./dropDown/DropDown";
 
-const Form = () => {
+const Form = (props) => {
   let inputRef = useRef();
 
-  const searchByCountry = () => {};
+  const searchByCountry = (e) => {
+    e.preventDefault();
+    const filter = `name/${inputRef.current.value}`;
+    fetchAPI(filter)
+      .then((res) => res.json())
+      .then((data) => props.setData(data))
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const filterByRegion = (e) => {
+    const region = `region/${e.target.textContent}`;
+    fetchAPI(region)
+      .then((res) => res.json())
+      .then((data) => props.setData(data))
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <StyledForm className="side-padding">
@@ -30,7 +51,7 @@ const Form = () => {
           />
         </div>
 
-        <DropDown />
+        <DropDown setData={props.setData} filterByRegion={filterByRegion} />
       </form>
     </StyledForm>
   );
