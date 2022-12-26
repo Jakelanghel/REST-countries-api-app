@@ -8,7 +8,8 @@ export const StyledHeader = styled.header`
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
   margin-bottom: 2rem;
 
-  padding: 2.5rem 0;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 
   .container-theme-switcher {
     display: flex;
@@ -22,6 +23,7 @@ export const StyledHeader = styled.header`
 
   p {
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600;
+    margin-top: 5px;
   }
 `;

@@ -27,10 +27,9 @@ export const GlobalStyles = createGlobalStyle`
         font-family: 'Nunito Sans', sans-serif;    
     }
     
-    .padding {
+    .side-padding {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
-        padding-bottom: 3.5rem;
     }
 
     .bs-1 {

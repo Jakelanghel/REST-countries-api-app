@@ -3,7 +3,7 @@ import { StyledHeader } from "./Header.Styled";
 
 const Header = () => {
   return (
-    <StyledHeader className="padding">
+    <StyledHeader className="side-padding">
       <h1>Where in the world?</h1>
       <div className="container-theme-switcher">
         <svg
