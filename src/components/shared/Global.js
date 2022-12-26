@@ -8,7 +8,6 @@ export const GlobalStyles = createGlobalStyle`
         --dark-gray: hsl(0, 0%, 52%);         // Light Mode Input
         --very-light-gray: hsl(0, 0%, 98%);   // Light Mode Background
         --white: hsl(0, 0%, 100%);            // Dark Mode Text & Light Mode Elements
-        --gray: #a7a7a7;
     }
 
     * {
@@ -24,7 +23,10 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        font-family: 'Nunito Sans', sans-serif;    
+        font-family: 'Nunito Sans', sans-serif;   
+        background-color: ${({ theme }) => theme.background}; 
+        color:  ${({ theme }) => theme.text}
+
     }
     
     .side-padding {
@@ -32,9 +34,11 @@ export const GlobalStyles = createGlobalStyle`
         padding-right: 1.5rem;
     }
 
-    .bs-1 {
+    /* .bs-1 {
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
-    }
+    } */
+
+    /* ${({ theme }) => theme.background} */
 
 `;

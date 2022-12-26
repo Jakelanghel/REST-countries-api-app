@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const StyledCard = styled.div`
   width: 100%;
   border-radius: 10px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin-top: 5rem;
+  background-color: ${({ theme }) => theme.elements};
 
   h2 {
     font-size: 1.25rem;

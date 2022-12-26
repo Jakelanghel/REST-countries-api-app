@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { fetchAPI } from "./services/fetchAPI";
 import { GlobalStyles } from "./components/shared/Global";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./theme/theme";
 
 import Header from "./components/header/Header";
 import Form from "./components/form/Form";
@@ -8,6 +10,11 @@ import Card from "./components/card/Card";
 
 function App() {
   const [countriesData, setCountriesData] = useState(null);
+  const [isDark, setIsDark] = useState(false);
+
+  const appTheme = isDark ? theme.dark : theme.light;
+
+  const toggleTheme = () => setIsDark((oldState) => !oldState);
 
   useEffect(() => {
     fetchAPI("region/ame")
@@ -32,11 +39,14 @@ function App() {
 
   return (
     <>
-      <GlobalStyles />
-      <Header />
-      <Form setData={setCountriesData} />
+      <ThemeProvider theme={appTheme}>
+        <GlobalStyles />
 
-      <div className="side-padding">{cardElements}</div>
+        <Header onClick={toggleTheme} />
+        <Form setData={setCountriesData} />
+
+        <div className="side-padding">{cardElements}</div>
+      </ThemeProvider>
     </>
   );
 }

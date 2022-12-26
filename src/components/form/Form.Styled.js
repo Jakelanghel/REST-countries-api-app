@@ -18,11 +18,15 @@ export const StyledForm = styled.main`
     padding-left: 1rem;
     margin-bottom: 3rem;
     border-radius: 5px;
+    background-color: ${({ theme }) => theme.elements};
+    box-shadow: ${({ theme }) => {
+      return theme.boxShadow ? theme.boxShadow : null;
+    }};
   }
 
   .search-btn {
     border: none;
-    background-color: transparent;
+    background-color: ${({ theme }) => theme.elements};
     padding: 1rem;
   }
 
@@ -42,10 +46,11 @@ export const StyledForm = styled.main`
     letter-spacing: 0.5px;
     padding: 1rem 0;
     padding-left: 1rem;
+    background-color: ${({ theme }) => theme.elements};
   }
 
   #usr-input::placeholder {
-    color: var(--gray);
+    color: ${({ theme }) => theme.input};
     opacity: 0.8;
   }
 

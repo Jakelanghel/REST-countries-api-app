@@ -21,17 +21,17 @@ const DropDown = (props) => {
     },
     visible: {
       opacity: 1,
-      transition: { delay: 0.15 },
+      transition: { delay: 0.1, ease: "easeInOut" },
     },
     exit: {
       opacity: 0,
-      transition: { delay: 0.15 },
+      transition: { delay: 0.1 },
     },
   };
   return (
     <StyledDropDown>
       <div className="container-dropdown">
-        <div className="dropdown-select bs-1 dropdown-box">
+        <div className="dropdown-select">
           <p className="label">Filter by Region</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"

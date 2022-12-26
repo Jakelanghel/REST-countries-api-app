@@ -32,7 +32,7 @@ const Form = (props) => {
     <StyledForm className="side-padding">
       <form action="" onSubmit={searchByCountry}>
         <label htmlFor="usr-input">search countries</label>
-        <div className="container-search bs-1">
+        <div className="container-search">
           <button className="search-btn" onClick={searchByCountry}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
