@@ -10,6 +10,10 @@ export const GlobalStyles = createGlobalStyle`
 
     }
 
+    img {
+        display: block;
+    }
+
     h1 {
         font-size: 1.1rem;
     }
@@ -26,6 +30,10 @@ export const GlobalStyles = createGlobalStyle`
         padding-right: 1.5rem;
     }
 
+    .container-cards {
+          padding-bottom: 3rem;
+        }
+
     
 
     @media screen and (min-width: 900px) {
@@ -39,7 +47,7 @@ export const GlobalStyles = createGlobalStyle`
             flex-direction: row;
             flex-wrap: wrap;
             gap: 1.5rem;
-    }
+        }
     }
 
     

@@ -1,8 +1,8 @@
 import React from "react";
-import { StyledCard } from "./Card.Styled";
+import { StyledSmallCard } from "./SmallCard.Styled";
 const Card = (props) => {
   return (
-    <StyledCard>
+    <StyledSmallCard>
       <img
         src={props.flagImg}
         alt={`flag of the ${props.name}`}
@@ -21,7 +21,7 @@ const Card = (props) => {
           Capital: <span>{props.cap}</span>
         </p>
       </div>
-    </StyledCard>
+    </StyledSmallCard>
   );
 };
 

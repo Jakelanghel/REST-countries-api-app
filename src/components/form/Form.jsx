@@ -12,9 +12,20 @@ const Form = (props) => {
     const filter = `name/${inputRef.current.value}`;
     fetchAPI(filter)
       .then((res) => res.json())
-      .then((data) => props.setData(data))
-      .catch((error) => {
-        console.log(error);
+      .then((data) => {
+        props.setData([data[0]]);
+        const borders =
+          data[0].borders.length > 3
+            ? data[0].borders.slice(0, 3)
+            : data[0].borders;
+
+        borders.forEach((x) => {
+          fetch(`https://restcountries.com/v2/name/${x}?fields=name`)
+            .then((res) => res.json())
+            .then((data) =>
+              props.setBorders((oldState) => [...oldState, data[0].name])
+            );
+        });
       });
   };
 

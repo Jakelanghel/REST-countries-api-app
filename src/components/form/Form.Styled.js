@@ -41,6 +41,7 @@ export const StyledForm = styled.main`
   }
 
   .search-input {
+    width: 100%;
     border: none;
     font-size: 1rem;
     letter-spacing: 0.5px;
