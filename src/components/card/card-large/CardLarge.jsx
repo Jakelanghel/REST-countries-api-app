@@ -10,13 +10,12 @@ const CardLarge = (props) => {
         props.setData(data);
       });
   };
-  // console.log(borders);
 
-  // const borderButtons = props.borders.map((border) => (
-  //   <button className="border-btn" key={border}>
-  //     {border}
-  //   </button>
-  // ));
+  const borderButtons = props.borders.map((border) => (
+    <button className="border-btn" key={border}>
+      {border}
+    </button>
+  ));
   return (
     <StyledLargeCard>
       <button className="back-btn" onClick={back}>
@@ -73,7 +72,7 @@ const CardLarge = (props) => {
 
           <div className="container-border">
             <h3>Border Countries:</h3>
-            {/* <div className="container-border-btns">{borderButtons}</div> */}
+            <div className="container-border-btns">{borderButtons}</div>
           </div>
         </div>
       </div>

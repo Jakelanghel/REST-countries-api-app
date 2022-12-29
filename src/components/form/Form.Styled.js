@@ -48,6 +48,7 @@ export const StyledForm = styled.main`
     padding: 1rem 0;
     padding-left: 1rem;
     background-color: ${({ theme }) => theme.elements};
+    color: ${({ theme }) => theme.text};
   }
 
   #usr-input::placeholder {

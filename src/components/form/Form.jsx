@@ -7,28 +7,34 @@ import DropDown from "./dropDown/DropDown";
 const Form = (props) => {
   let inputRef = useRef();
 
-  // const getBorderCountries = (obj, setBorders) => {
-  //   console.log(obj.borders);
-  //   const borders =
-  //     obj.borders.length > 3 ? obj.borders.slice(0, 3) : obj.borders;
-  //   console.log(borders);
+  const getBorderCountries = (obj) => {
+    const bordersArr =
+      obj.borders.length > 3 ? obj.borders.slice(0, 3) : obj.borders;
 
-  //   borders.forEach((x) => {
-  //     fetch(`https://restcountries.com/v2/name/${x}?fields=name`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setBorders((oldState) => [...oldState, obj.name]);
-  //       });
-  //   });
-  // };
+    bordersArr.forEach((name) => {
+      fetchAPI(`name/${name}`)
+        .then((res) => res.json())
+        .then((data) => {
+          props.setBorders((oldState) => [...oldState, data[0].name.common]);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
+  };
 
   const searchByCountry = (e) => {
     e.preventDefault();
+    props.setBorders([]);
     const filter = `name/${inputRef.current.value}`;
     fetchAPI(filter)
       .then((res) => res.json())
       .then((data) => {
+        getBorderCountries(data[0], props.setBorders);
         props.setData([data[0]]);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
@@ -36,10 +42,7 @@ const Form = (props) => {
     const region = `region/${e.target.textContent}`;
     fetchAPI(region)
       .then((res) => res.json())
-      .then((data) => props.setData(data))
-      .catch((error) => {
-        console.log(error);
-      });
+      .then((data) => props.setData(data));
   };
 
   return (

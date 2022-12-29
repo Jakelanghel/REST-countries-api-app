@@ -14,7 +14,7 @@ import { AnimatePresence } from "framer-motion";
 function App() {
   const [countriesData, setCountriesData] = useState([]);
   const [isDark, setIsDark] = useState(false);
-  // const [bordersNames, setBordersNames] = useState([]);
+  const [bordersNames, setBordersNames] = useState([]);
 
   const appTheme = isDark ? theme.dark : theme.light;
 
@@ -50,11 +50,6 @@ function App() {
 
           const languages = Object.values(country.languages);
 
-          const borders =
-            country.borders.length > 3
-              ? country.borders.slice(0, 3)
-              : country.borders;
-
           return (
             <CardLarge
               name={country.name.common}
@@ -67,14 +62,13 @@ function App() {
               tld={country.tld[0]}
               currencies={currency}
               languages={languages.toString()}
-              borders={borders}
+              borders={bordersNames}
               key={country.cca2}
               setData={setCountriesData}
+              setBorders={setBordersNames}
             />
           );
         });
-
-  // console.log(bordersNames);
 
   return (
     <>
@@ -84,7 +78,7 @@ function App() {
           {cardElements.length > 1 ? (
             <>
               <Header onClick={toggleTheme} />
-              <Form setData={setCountriesData} />
+              <Form setData={setCountriesData} setBorders={setBordersNames} />
               <ContainerCards className="side-padding">
                 {cardElements}
               </ContainerCards>

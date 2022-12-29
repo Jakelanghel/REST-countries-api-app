@@ -13,6 +13,8 @@ export const StyledLargeCard = styled.div`
     justify-content: space-between;
     padding: 0.5rem 1rem;
     font-size: 1rem;
+    font-weight: 600;
+    color: ${({ theme }) => theme.text};
     box-shadow: ${({ theme }) => {
       return theme.boxShadowBtn ? theme.boxShadowBtn : null;
     }};
@@ -23,6 +25,9 @@ export const StyledLargeCard = styled.div`
 
   .back-arrow {
     width: 20px;
+    filter: ${({ theme }) => {
+      return theme.filterWhite ? theme.filterWhite : null;
+    }};
   }
 
   h2 {
@@ -53,7 +58,7 @@ export const StyledLargeCard = styled.div`
 
   .container-border-btns {
     display: flex;
-    justify-content: space-between;
+    gap: 1.5rem;
   }
 
   h3 {
@@ -63,13 +68,15 @@ export const StyledLargeCard = styled.div`
   }
 
   .border-btn {
-    padding: 0.5rem 1.25rem;
+    width: 25%;
+    padding: 0.5rem 0;
     border: none;
     border-radius: 3px;
     background-color: ${({ theme }) => theme.elements};
     box-shadow: ${({ theme }) => {
       return theme.boxShadowBtn ? theme.boxShadowBtn : null;
     }};
+    color: ${({ theme }) => theme.text};
   }
 
   @media screen and (min-width: 900px) {
