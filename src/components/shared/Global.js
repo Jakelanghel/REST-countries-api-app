@@ -10,6 +10,10 @@ export const GlobalStyles = createGlobalStyle`
 
     }
 
+    html {
+        overflow-x: hidden;
+    }
+
     img {
         display: block;
     }

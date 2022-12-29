@@ -7,6 +7,21 @@ import DropDown from "./dropDown/DropDown";
 const Form = (props) => {
   let inputRef = useRef();
 
+  // const getBorderCountries = (obj, setBorders) => {
+  //   console.log(obj.borders);
+  //   const borders =
+  //     obj.borders.length > 3 ? obj.borders.slice(0, 3) : obj.borders;
+  //   console.log(borders);
+
+  //   borders.forEach((x) => {
+  //     fetch(`https://restcountries.com/v2/name/${x}?fields=name`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setBorders((oldState) => [...oldState, obj.name]);
+  //       });
+  //   });
+  // };
+
   const searchByCountry = (e) => {
     e.preventDefault();
     const filter = `name/${inputRef.current.value}`;
@@ -14,18 +29,6 @@ const Form = (props) => {
       .then((res) => res.json())
       .then((data) => {
         props.setData([data[0]]);
-        const borders =
-          data[0].borders.length > 3
-            ? data[0].borders.slice(0, 3)
-            : data[0].borders;
-
-        borders.forEach((x) => {
-          fetch(`https://restcountries.com/v2/name/${x}?fields=name`)
-            .then((res) => res.json())
-            .then((data) =>
-              props.setBorders((oldState) => [...oldState, data[0].name])
-            );
-        });
       });
   };
 

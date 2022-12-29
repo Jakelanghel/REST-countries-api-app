@@ -14,7 +14,7 @@ import { AnimatePresence } from "framer-motion";
 function App() {
   const [countriesData, setCountriesData] = useState([]);
   const [isDark, setIsDark] = useState(false);
-  const [bordersNames, setBordersNames] = useState([]);
+  // const [bordersNames, setBordersNames] = useState([]);
 
   const appTheme = isDark ? theme.dark : theme.light;
 
@@ -67,7 +67,7 @@ function App() {
               tld={country.tld[0]}
               currencies={currency}
               languages={languages.toString()}
-              borders={bordersNames}
+              borders={borders}
               key={country.cca2}
               setData={setCountriesData}
             />
@@ -84,7 +84,7 @@ function App() {
           {cardElements.length > 1 ? (
             <>
               <Header onClick={toggleTheme} />
-              <Form setData={setCountriesData} setBorders={setBordersNames} />
+              <Form setData={setCountriesData} />
               <ContainerCards className="side-padding">
                 {cardElements}
               </ContainerCards>
