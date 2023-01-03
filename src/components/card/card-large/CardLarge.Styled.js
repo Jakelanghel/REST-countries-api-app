@@ -79,6 +79,10 @@ export const StyledLargeCard = styled.div`
     color: ${({ theme }) => theme.text};
   }
 
+  .border-btn:hover {
+    cursor: pointer;
+  }
+
   @media screen and (min-width: 900px) {
     width: 400px;
 

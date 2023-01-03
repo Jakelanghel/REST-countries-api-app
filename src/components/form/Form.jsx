@@ -7,35 +7,9 @@ import DropDown from "./dropDown/DropDown";
 const Form = (props) => {
   let inputRef = useRef();
 
-  const getBorderCountries = (obj) => {
-    const bordersArr =
-      obj.borders.length > 3 ? obj.borders.slice(0, 3) : obj.borders;
-
-    bordersArr.forEach((name) => {
-      fetchAPI(`name/${name}`)
-        .then((res) => res.json())
-        .then((data) => {
-          props.setBorders((oldState) => [...oldState, data[0].name.common]);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    });
-  };
-
-  const searchByCountry = (e) => {
-    e.preventDefault();
-    props.setBorders([]);
-    const filter = `name/${inputRef.current.value}`;
-    fetchAPI(filter)
-      .then((res) => res.json())
-      .then((data) => {
-        getBorderCountries(data[0], props.setBorders);
-        props.setData([data[0]]);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const submit = (e) => {
+    const name = inputRef.current.value;
+    props.search(e, name);
   };
 
   const filterByRegion = (e) => {
@@ -50,10 +24,10 @@ const Form = (props) => {
 
   return (
     <StyledForm className="side-padding">
-      <form action="" onSubmit={searchByCountry}>
+      <form action="" onSubmit={submit}>
         <label htmlFor="usr-input">search countries</label>
         <div className="container-search">
-          <button className="search-btn" onClick={searchByCountry}>
+          <button className="search-btn" onClick={submit}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"

@@ -7,11 +7,7 @@ const Card = (props) => {
 
   const onClick = (e) => {
     const name = nameRef.current.textContent;
-    fetchAPI(`name/${name}`)
-      .then((res) => res.json())
-      .then((data) => {
-        props.setCountry(data);
-      });
+    props.handleClick(e, name);
   };
   return (
     <StyledSmallCard onClick={onClick} id={props.name}>

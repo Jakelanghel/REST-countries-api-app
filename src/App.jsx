@@ -20,6 +20,37 @@ function App() {
 
   const toggleTheme = () => setIsDark((oldState) => !oldState);
 
+  const getBorderNames = (borders) => {
+    borders = borders.length > 3 ? borders.slice(0, 3) : borders;
+    borders.forEach((name) => {
+      fetchAPI(`name/${name}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setBordersNames((oldState) => [...oldState, data[0].name.common]);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
+  };
+
+  const searchByCountry = (e, ref) => {
+    ref = ref.toLowerCase();
+    e.preventDefault();
+    setBordersNames([]);
+    const filter = `name/${ref}`;
+    fetchAPI(filter)
+      .then((res) => res.json())
+      .then((data) => {
+        const borders = data[0].borders ? data[0].borders : false;
+        borders ? getBorderNames(borders) : null;
+        setCountriesData([data[0]]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     fetchAPI("region/americas")
       .then((res) => res.json())
@@ -36,22 +67,23 @@ function App() {
       ? countriesData.map((country) => (
           <CardSmall
             key={country.cca2}
-            setCountry={setCountriesData}
-            setBorders={setBordersNames}
             name={country.name.official}
             flagImg={country.flags.svg}
             pop={country.population}
             reg={country.region}
             cap={country.capital}
+            handleClick={searchByCountry}
           />
         ))
       : countriesData.map((country) => {
           return (
             <CardLarge
               key={country.cca2}
+              name={country.name.official}
               setData={setCountriesData}
-              setBorders={setBordersNames}
-              country={country}
+              nativeNames={country.name.nativeName}
+              currencies={country.currencies}
+              languages={country.languages}
               flagImg={country.flags.svg}
               pop={country.population}
               reg={country.region}
@@ -59,6 +91,7 @@ function App() {
               cap={country.capital}
               tld={country.tld[0]}
               borders={bordersNames}
+              search={searchByCountry}
             />
           );
         });
@@ -71,7 +104,11 @@ function App() {
           {cardElements.length > 1 ? (
             <>
               <Header onClick={toggleTheme} />
-              <Form setData={setCountriesData} setBorders={setBordersNames} />
+              <Form
+                setData={setCountriesData}
+                setBorders={setBordersNames}
+                search={searchByCountry}
+              />
               <ContainerCards className="side-padding">
                 {cardElements}
               </ContainerCards>

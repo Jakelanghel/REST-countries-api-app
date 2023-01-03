@@ -1,23 +1,24 @@
-import React from "react";
+import React, { useRef } from "react";
 import { fetchAPI } from "../../../services/fetchAPI";
 import { StyledLargeCard } from "../card-large/CardLarge.Styled";
 
 const CardLarge = (props) => {
+  const btnRef = useRef();
   const getNativeName = () => {
-    const names = Object.values(props.country.name.nativeName);
+    const names = Object.values(props.nativeNames);
     const nativeName = names[names.length - 1].common;
     return nativeName;
   };
 
   const getCurrencies = () => {
-    let currencies = Object.values(props.country.currencies);
+    let currencies = Object.values(props.currencies);
     currencies = Object.values(currencies[0]);
     const currency = currencies[0];
     return currencies;
   };
 
   const getLanguage = () => {
-    return Object.values(props.country.languages);
+    return Object.values(props.languages);
   };
 
   const back = () => {
@@ -28,8 +29,18 @@ const CardLarge = (props) => {
       });
   };
 
+  const handleBtnClick = (e) => {
+    const name = btnRef.current.textContent;
+    props.search(e, name);
+  };
+
   const borderButtons = props.borders.map((border) => (
-    <button className="border-btn" key={border}>
+    <button
+      className="border-btn"
+      key={border}
+      ref={btnRef}
+      onClick={handleBtnClick}
+    >
       {border}
     </button>
   ));
@@ -92,10 +103,12 @@ const CardLarge = (props) => {
             </div>
           </div>
 
-          <div className="container-border">
-            <h3>Border Countries:</h3>
-            <div className="container-border-btns">{borderButtons}</div>
-          </div>
+          {props.borders.length >= 1 ? (
+            <div className="container-border">
+              <h3>Border Countries:</h3>
+              <div className="container-border-btns">{borderButtons}</div>
+            </div>
+          ) : null}
         </div>
       </div>
     </StyledLargeCard>
