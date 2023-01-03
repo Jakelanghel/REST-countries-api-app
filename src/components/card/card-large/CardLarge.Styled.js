@@ -45,10 +45,12 @@ export const StyledLargeCard = styled.div`
     margin-left: 0.25rem;
   }
 
+  .container-img {
+    width: 100%;
+  }
+
   .flag-img {
     width: 100%;
-    min-height: 250px;
-    object-fit: cover;
     margin-bottom: 3rem;
   }
 
