@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledLargeCard = styled.div`
-  max-width: 450px;
+  max-width: 500px;
   margin: 0 auto;
   border-radius: 10px;
   margin-top: 5rem;
@@ -47,7 +47,7 @@ export const StyledLargeCard = styled.div`
 
   .flag-img {
     width: 100%;
-    height: 250px;
+    min-height: 250px;
     object-fit: cover;
     margin-bottom: 3rem;
   }
@@ -83,13 +83,52 @@ export const StyledLargeCard = styled.div`
     cursor: pointer;
   }
 
-  @media screen and (min-width: 900px) {
-    width: 400px;
+  @media screen and (min-width: 1100px) {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 3rem;
+
+    .container-img {
+      max-width: 400px;
+      border-radius: 3px;
+      margin-right: 1rem;
+    }
 
     .flag-img {
       width: 100%;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
+      height: auto;
+    }
+
+    .container-row {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .container-stats {
+      max-width: 250px;
+    }
+
+    .mar-tp {
+      margin-top: 4.3rem;
+    }
+
+    .container-border {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      align-self: flex-start;
+    }
+
+    h3 {
+      margin-right: 3rem;
+      margin-bottom: 0;
+    }
+
+    .container-border-btns {
+      width: 55%;
     }
   }
 `;

@@ -63,11 +63,13 @@ const CardLarge = (props) => {
       </button>
 
       <div className="container-row">
-        <img
-          src={props.flagImg}
-          alt={`flag of the ${props.name}`}
-          className="flag-img"
-        />
+        <div className="container-img">
+          <img
+            src={props.flagImg}
+            alt={`flag of the ${props.name}`}
+            className="flag-img"
+          />
+        </div>
 
         <div className="container-col">
           <div className="container-row">
@@ -90,7 +92,7 @@ const CardLarge = (props) => {
               </p>
             </div>
 
-            <div className="container-stats">
+            <div className="container-stats mar-tp">
               <p className="domain">
                 Top Level Domain: <span>{props.tld}</span>
               </p>
@@ -102,7 +104,6 @@ const CardLarge = (props) => {
               </p>
             </div>
           </div>
-
           {props.borders.length >= 1 ? (
             <div className="container-border">
               <h3>Border Countries:</h3>
