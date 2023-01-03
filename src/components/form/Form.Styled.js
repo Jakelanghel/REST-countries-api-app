@@ -61,7 +61,7 @@ export const StyledForm = styled.main`
     z-index: 0;
   }
 
-  @media screen and (min-width: 900px) {
+  @media screen and (min-width: 600px) {
     form {
       flex-direction: row;
       justify-content: space-between;

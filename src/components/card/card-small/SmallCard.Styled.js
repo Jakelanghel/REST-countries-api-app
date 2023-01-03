@@ -10,6 +10,10 @@ export const StyledSmallCard = styled.div`
     return theme.boxShadow ? theme.boxShadow : null;
   }};
 
+  &:hover {
+    cursor: pointer;
+  }
+
   h2 {
     font-size: 1.25rem;
     margin-bottom: 1rem;

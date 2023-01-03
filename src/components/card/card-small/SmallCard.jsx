@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useRef } from "react";
 import { StyledSmallCard } from "./SmallCard.Styled";
+import { fetchAPI } from "../../../services/fetchAPI";
+
 const Card = (props) => {
+  const nameRef = useRef();
+
+  const onClick = (e) => {
+    const name = nameRef.current.textContent;
+    fetchAPI(`name/${name}`)
+      .then((res) => res.json())
+      .then((data) => {
+        props.setCountry(data);
+      });
+  };
   return (
-    <StyledSmallCard>
+    <StyledSmallCard onClick={onClick} id={props.name}>
       <img
         src={props.flagImg}
         alt={`flag of the ${props.name}`}
@@ -10,7 +22,7 @@ const Card = (props) => {
       />
 
       <div className="container-stats">
-        <h2>{props.name}</h2>
+        <h2 ref={nameRef}>{props.name}</h2>
         <p className="population">
           Population: <span>{props.pop.toLocaleString("en-US")}</span>
         </p>

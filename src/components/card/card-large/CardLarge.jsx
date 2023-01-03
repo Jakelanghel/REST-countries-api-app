@@ -3,6 +3,23 @@ import { fetchAPI } from "../../../services/fetchAPI";
 import { StyledLargeCard } from "../card-large/CardLarge.Styled";
 
 const CardLarge = (props) => {
+  const getNativeName = () => {
+    const names = Object.values(props.country.name.nativeName);
+    const nativeName = names[names.length - 1].common;
+    return nativeName;
+  };
+
+  const getCurrencies = () => {
+    let currencies = Object.values(props.country.currencies);
+    currencies = Object.values(currencies[0]);
+    const currency = currencies[0];
+    return currencies;
+  };
+
+  const getLanguage = () => {
+    return Object.values(props.country.languages);
+  };
+
   const back = () => {
     fetchAPI("region/americas")
       .then((res) => res.json())
@@ -16,6 +33,11 @@ const CardLarge = (props) => {
       {border}
     </button>
   ));
+
+  const nativeName = getNativeName();
+  const currency = getCurrencies();
+  const language = getLanguage();
+
   return (
     <StyledLargeCard>
       <button className="back-btn" onClick={back}>
@@ -41,7 +63,7 @@ const CardLarge = (props) => {
             <div className="container-stats">
               <h2>{props.name}</h2>
               <p className="population">
-                Native name: <span>{props.nativeName}</span>
+                Native name: <span>{nativeName}</span>
               </p>
               <p className="population">
                 Population: <span>{props.pop.toLocaleString("en-US")}</span>
@@ -62,10 +84,10 @@ const CardLarge = (props) => {
                 Top Level Domain: <span>{props.tld}</span>
               </p>
               <p className="domain">
-                Currencies: <span>{props.currencies}</span>
+                Currencies: <span>{currency[0]}</span>
               </p>
               <p className="domain">
-                Language: <span>{props.languages}</span>
+                Language: <span>{language}</span>
               </p>
             </div>
           </div>

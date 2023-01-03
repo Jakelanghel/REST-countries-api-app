@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { fetchAPI } from "./services/fetchAPI";
 import { GlobalStyles } from "./components/shared/Global";
-import { ThemeProvider } from "styled-components";
 import { theme } from "./theme/theme";
+import { ThemeProvider } from "styled-components";
+import { AnimatePresence } from "framer-motion";
 
 import Header from "./components/header/Header";
 import Form from "./components/form/Form";
@@ -10,7 +11,6 @@ import CardSmall from "./components/card/card-small/SmallCard";
 import CardLarge from "./components/card/card-large/CardLarge";
 import ContainerCards from "./components/card/container-cards/ContainerCards";
 
-import { AnimatePresence } from "framer-motion";
 function App() {
   const [countriesData, setCountriesData] = useState([]);
   const [isDark, setIsDark] = useState(false);
@@ -25,6 +25,9 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setCountriesData(data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, []);
 
@@ -32,40 +35,30 @@ function App() {
     countriesData.length > 1
       ? countriesData.map((country) => (
           <CardSmall
+            key={country.cca2}
+            setCountry={setCountriesData}
+            setBorders={setBordersNames}
             name={country.name.official}
             flagImg={country.flags.svg}
             pop={country.population}
             reg={country.region}
             cap={country.capital}
-            key={country.cca2}
           />
         ))
       : countriesData.map((country) => {
-          const names = Object.values(country.name.nativeName);
-          const nativeName = names[names.length - 1].common;
-
-          let currencies = Object.values(country.currencies);
-          currencies = Object.values(currencies[0]);
-          const currency = currencies[0];
-
-          const languages = Object.values(country.languages);
-
           return (
             <CardLarge
-              name={country.name.common}
-              nativeName={nativeName}
+              key={country.cca2}
+              setData={setCountriesData}
+              setBorders={setBordersNames}
+              country={country}
               flagImg={country.flags.svg}
               pop={country.population}
               reg={country.region}
               subReg={country.subregion}
               cap={country.capital}
               tld={country.tld[0]}
-              currencies={currency}
-              languages={languages.toString()}
               borders={bordersNames}
-              key={country.cca2}
-              setData={setCountriesData}
-              setBorders={setBordersNames}
             />
           );
         });

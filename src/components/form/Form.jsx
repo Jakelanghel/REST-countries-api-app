@@ -42,7 +42,10 @@ const Form = (props) => {
     const region = `region/${e.target.textContent}`;
     fetchAPI(region)
       .then((res) => res.json())
-      .then((data) => props.setData(data));
+      .then((data) => props.setData(data))
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
