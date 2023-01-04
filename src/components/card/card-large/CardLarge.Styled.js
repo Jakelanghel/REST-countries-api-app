@@ -51,7 +51,7 @@ export const StyledLargeCard = styled.div`
 
   .flag-img {
     width: 100%;
-    margin-bottom: 3rem;
+npm     margin-bottom: 3rem;
   }
 
   .container-stats {

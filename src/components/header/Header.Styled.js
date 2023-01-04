@@ -16,6 +16,10 @@ export const StyledHeader = styled.header`
     display: flex;
   }
 
+  .container-theme-switcher:hover {
+    cursor: pointer;
+  }
+
   .theme-icon {
     width: 20px;
     margin-right: 0.5rem;

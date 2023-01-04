@@ -52,7 +52,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetchAPI("region/americas")
+    fetchAPI("all")
       .then((res) => res.json())
       .then((data) => {
         setCountriesData(data);

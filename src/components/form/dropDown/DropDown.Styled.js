@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const StyledDropDown = styled.div`
+  font-weight: 600;
   position: relative;
   z-index: 1;
-
-  font-weight: 600;
 
   .container-dropdown {
     width: 275px;
@@ -16,15 +15,18 @@ export const StyledDropDown = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 1.5rem;
+    padding: 1rem;
     box-shadow: ${({ theme }) => {
       return theme.boxShadow ? theme.boxShadow : null;
     }};
   }
 
+  .dropdown-select:hover {
+    cursor: pointer;
+  }
+
   .arrow-img {
-    width: 55px;
-    padding: 1rem 1.25rem;
+    width: 20px;
     filter: ${({ theme }) => theme.filterWhite};
   }
 
