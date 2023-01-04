@@ -97,12 +97,12 @@ function App() {
         });
 
   return (
-    <>
+    <main>
       <ThemeProvider theme={appTheme}>
         <GlobalStyles />
         <AnimatePresence>
           {cardElements.length > 1 ? (
-            <main>
+            <>
               <Header onClick={toggleTheme} />
               <Form
                 setData={setCountriesData}
@@ -112,18 +112,18 @@ function App() {
               <ContainerCards className="side-padding">
                 {cardElements}
               </ContainerCards>
-            </main>
+            </>
           ) : (
-            <main>
+            <>
               <Header onClick={toggleTheme} />
               <ContainerCards className="side-padding">
                 {cardElements}
               </ContainerCards>
-            </main>
+            </>
           )}
         </AnimatePresence>
       </ThemeProvider>
-    </>
+    </main>
   );
 }
 
