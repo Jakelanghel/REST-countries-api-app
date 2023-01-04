@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledForm = styled.main`
+export const StyledForm = styled.div`
   width: 100%;
 
   label {
