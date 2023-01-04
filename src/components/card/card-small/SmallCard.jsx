@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { StyledSmallCard } from "./SmallCard.Styled";
-import { fetchAPI } from "../../../services/fetchAPI";
+import { nanoid } from "nanoid";
 
 const Card = (props) => {
   const nameRef = useRef();
@@ -10,7 +10,7 @@ const Card = (props) => {
     props.handleClick(e, name);
   };
   return (
-    <StyledSmallCard onClick={onClick} id={props.name}>
+    <StyledSmallCard onClick={onClick} id={nanoid()}>
       <img
         src={props.flagImg}
         alt={`flag of the ${props.name}`}
